@@ -1,6 +1,4 @@
 // Import: Packages
-
-// eslint-disable-next-line no-unused-vars
 import React from "react";
 
 // Import: Components
@@ -13,7 +11,7 @@ import { DashboardContainer } from "./Dashboard.elements";
 import useDashboard from "./useDashboard";
 
 // Page: Dashboard
-export default function Dashboard() {
+export default function Dashboard(): JSX.Element {
   const { data = [], vulnerabilitiesFetchStatus = "" } = useDashboard();
 
   return (

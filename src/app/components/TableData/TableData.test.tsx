@@ -1,4 +1,5 @@
 // Import: Packages
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -9,7 +10,7 @@ import TableData from "./TableData.component";
 test("TableData component renders correctly", () => {
   render(
     <Router>
-      <TableData dataFetchStatus="" />
+      <TableData dataFetchStatus={null} data={[]} />
     </Router>
   );
   const tableDataElement = screen.getByTestId("table-data");

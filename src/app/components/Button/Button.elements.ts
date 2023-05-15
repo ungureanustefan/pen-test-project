@@ -1,5 +1,5 @@
 // Import: Packages
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export const StyledButton = styled.button`
   background: #cd054f;

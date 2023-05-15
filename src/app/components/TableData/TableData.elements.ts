@@ -98,11 +98,14 @@ export const TR = styled.tr`
   }
 `;
 
-export const TD = styled.td`
+interface TDProps {
+  severity?: string;
+}
+export const TD = styled.td<TDProps>`
   padding: 0.375rem 0.25rem;
   text-align: center;
   color: ${({ severity }) => {
-    return defineSeverityColor(severity);
+    return defineSeverityColor(severity || "");
   }};
   :nth-child(1) {
     width: 20%;

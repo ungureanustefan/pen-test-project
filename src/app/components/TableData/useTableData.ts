@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 export default function useTableData() {
   const navigate = useNavigate();
 
-  const handleClickView = (vulnerability) => {
+  const handleClickView = (vulnerability: any) => {
     navigate(`/vulnerability/${vulnerability.uuid}`, {
       state: { ...vulnerability, from: "/" },
     });

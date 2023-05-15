@@ -1,4 +1,4 @@
-export const defineSeverityColor = (severity) => {
+export const defineSeverityColor = (severity: string) => {
   switch (severity) {
     case "CRITICAL":
       return "red";

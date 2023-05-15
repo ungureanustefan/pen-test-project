@@ -1,7 +1,5 @@
 // Import: Packages
-// eslint-disable-next-line no-unused-vars
 import React from "react";
-import { PropTypes } from "prop-types";
 
 // Import: Components
 import Button from "../Button/Button.component";
@@ -19,11 +17,23 @@ import {
 } from "./TableData.elements";
 
 // Import: Custom Hooks
-
 import useTableData from "./useTableData";
 
 // Component: TableData
-export default function TableData({ data, dataFetchStatus }) {
+interface Vulnerability {
+  uuid: string;
+  name: string;
+  description: string;
+  severity: string;
+  // Adjust the types of other properties according to your data structure
+}
+
+interface TableDataProps {
+  data: Vulnerability[];
+  dataFetchStatus: "pending" | "rejected" | "fulfilled" | null;
+}
+
+export default function TableData({ data, dataFetchStatus }: TableDataProps) {
   const { handleClickView } = useTableData();
 
   return (
@@ -32,11 +42,8 @@ export default function TableData({ data, dataFetchStatus }) {
         <TableHead>
           <TableHeadTR>
             <TH>VULNERABILITY NAME</TH>
-
             <TH>DESCRIPTION</TH>
-
             <TH>SEVERITY</TH>
-
             <TH></TH>
           </TableHeadTR>
         </TableHead>
@@ -51,13 +58,14 @@ export default function TableData({ data, dataFetchStatus }) {
             </TR>
           ) : dataFetchStatus === "fulfilled" ? (
             data?.length > 0 ? (
-              data.map((vulnerability) => {
-                const { uuid, name, description, severity } = vulnerability;
+              data.map((vulnerability: Vulnerability) => {
                 return (
-                  <TR key={uuid}>
-                    <TD>{name}</TD>
-                    <TD>{description}</TD>
-                    <TD severity={severity}>{severity}</TD>
+                  <TR key={vulnerability.uuid}>
+                    <TD>{vulnerability.name}</TD>
+                    <TD>{vulnerability.description}</TD>
+                    <TD severity={vulnerability.severity}>
+                      {vulnerability.severity}
+                    </TD>
                     <TD>
                       <Button
                         handleClick={() => handleClickView(vulnerability)}
@@ -79,15 +87,3 @@ export default function TableData({ data, dataFetchStatus }) {
     </TableContainer>
   );
 }
-
-TableData.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      uuid: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      severity: PropTypes.string.isRequired,
-    })
-  ),
-  dataFetchStatus: PropTypes.string.isRequired,
-};
