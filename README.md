@@ -1,3 +1,10 @@
+# To Start the App :
+
+1. Clone the repository to your local machine
+2. Open it in your source code editor
+3. Run "npm install" in the terminal to install all the dependencies
+4. Run "npm start"
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
