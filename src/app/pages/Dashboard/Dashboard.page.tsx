@@ -12,12 +12,16 @@ import useDashboard from "./useDashboard";
 
 // Page: Dashboard
 export default function Dashboard(): JSX.Element {
-  const { data = [], vulnerabilitiesFetchStatus = "" } = useDashboard();
+  const { vulnerabilitiesData = [], vulnerabilitiesFetchStatus = "" } =
+    useDashboard();
 
   return (
     <DashboardContainer data-testid="dashboard-page">
       <h1>Dashboard</h1>
-      <TableData data={data} dataFetchStatus={vulnerabilitiesFetchStatus} />
+      <TableData
+        data={vulnerabilitiesData}
+        dataFetchStatus={vulnerabilitiesFetchStatus}
+      />
     </DashboardContainer>
   );
 }

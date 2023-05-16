@@ -13,12 +13,9 @@ export default function useDashboard() {
     dispatch(getVulnerabilities() as any);
   }, [dispatch]);
 
-  const { data } = useSelector(
-    (state: any) => state.vulnerabilities.vulnerabilitiesData
-  );
-  const { vulnerabilitiesFetchStatus } = useSelector(
+  const { vulnerabilitiesData, vulnerabilitiesFetchStatus } = useSelector(
     (state: any) => state.vulnerabilities
   );
 
-  return { data, vulnerabilitiesFetchStatus };
+  return { vulnerabilitiesData, vulnerabilitiesFetchStatus };
 }

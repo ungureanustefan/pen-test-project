@@ -13,7 +13,7 @@ export const getVulnerabilities = createAsyncThunk(
         },
       };
       const response = await axios(config);
-      const data = await response.data;
+      const data = await response.data.data;
       return data;
     } catch (error) {
       console.log(error);
@@ -22,7 +22,7 @@ export const getVulnerabilities = createAsyncThunk(
 );
 
 const initialState = {
-  vulnerabilitiesData: {},
+  vulnerabilitiesData: [],
   vulnerabilitiesFetchStatus: "",
 };
 

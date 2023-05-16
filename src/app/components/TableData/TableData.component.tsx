@@ -19,20 +19,18 @@ import {
 // Import: Custom Hooks
 import useTableData from "./useTableData";
 
-// Component: TableData
 interface Vulnerability {
   uuid: string;
   name: string;
   description: string;
   severity: string;
-  // Adjust the types of other properties according to your data structure
 }
-
 interface TableDataProps {
   data: Vulnerability[];
   dataFetchStatus: "pending" | "rejected" | "fulfilled" | null;
 }
 
+// Component: TableData
 export default function TableData({ data, dataFetchStatus }: TableDataProps) {
   const { handleClickView } = useTableData();
 
